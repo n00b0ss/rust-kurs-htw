@@ -23,6 +23,22 @@ impl KomplZahl {
     fn new(real: i32, img: i32) -> KomplZahl {
         KomplZahl { real, img }
     }
+    
+    fn add(&self, other: &KomplZahl) -> KomplZahl {
+        let z = KomplZahl {
+            real: self.real + other.real,
+            img: self.img + other.img,
+        };
+        z
+    }
+    
+    fn mult(&self, other: &KomplZahl) -> KomplZahl {
+        let z = KomplZahl {
+            real: self.real * other.real - self.img * other.img,
+            img: self.real * other.img + other.real * self.img,
+        };
+        z
+    }
 }
 
 fn main() {
@@ -85,6 +101,13 @@ fn main() {
     }
 
     let komplexe_zahl2 = KomplZahl::new(real2, img2);
-  println!("Die erste komplexe Zahl lautet: {}", komplexe_zahl1);
-  println!("Die zweite komplexe Zahl lautet: {}", komplexe_zahl2);
+    println!("Die erste komplexe Zahl lautet: {}", komplexe_zahl1);
+    println!("Die zweite komplexe Zahl lautet: {}", komplexe_zahl2);
+    
+    let komplexe_zahl3 = komplexe_zahl1.add(&komplexe_zahl2);
+    println!("Die addierte komplexe Zahl lautet: {}", komplexe_zahl3);
+    
+    let komplexe_zahl4 = komplexe_zahl1.mult(&komplexe_zahl2);
+    println!("Die multiplizierte komplexe Zahl lautet: {}", komplexe_zahl4);
 }
+  
